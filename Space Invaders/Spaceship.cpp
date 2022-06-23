@@ -7,34 +7,29 @@
 
 #include "Spaceship.hpp"
 #include "Game_Engine.hpp"
-Spaceship::Spaceship(SDL_Renderer *rend, int x, int y) : GameObject(rend, x, y)
+#include <vector>
+
+bool Spaceship::init(SDL_Renderer *rend, int x, int y)
 {
-    objTexture = TextureManager::LoadTexture(texture, rend);
-    start_health = 100;
-    srcRect.h = height;
-    srcRect.w = width;
-    objRect.h = srcRect.h;
-    objRect.w = srcRect.w;
-    alive = true;
+    if((objTexture = TextureManager::LoadTexture(path, rend)) == nullptr)
+        return false;
+    renderer = rend;
+    xpos = x;
+    ypos = y;
+    objRect.x = xpos;
+    objRect.y = ypos;
+    objRect.h = srcRect.h = height;
+    objRect.w = srcRect.w = width;
+    return true;
 }
 
-void Spaceship::SpaceshipControl(int height, int width)
+void Spaceship::Update()
 {
-    const Uint8 * keystate = SDL_GetKeyboardState(NULL);
-    if(keystate[SDL_SCANCODE_LEFT])
-        xpos -= 5;
-    if(keystate[SDL_SCANCODE_RIGHT])
-        xpos += 5;
-    
-    if(xpos < 0)
-        xpos = 3;
-    else if (xpos > width - 76)
-        xpos = width - 79;
-    
-    if(xpos < 0)
-        xpos = 0;
-    else if (ypos > height - 68)
-        xpos = height - 68;
+    objRect.x = xpos;
+    objRect.y = ypos;
 }
 
-
+Uint32& Spaceship::getCooldown()
+{
+    return delay;
+}

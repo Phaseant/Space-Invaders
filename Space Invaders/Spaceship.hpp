@@ -13,16 +13,19 @@
 class Spaceship : public GameObject
 {
 public:
-    Spaceship(SDL_Renderer *rend, int x, int y);
-    bool & isAlive();
-    void SpaceshipControl(int height, int width);
-private:
-    int start_health;
-    int remained_health;
-    bool alive;
+    Spaceship():GameObject(){}
+    void Update();
+    bool init(SDL_Renderer * rend, int x, int y);
+    void SpaceshipControl(int WINDOW_WIDHT);
+    Uint32& getCooldown();
+protected:
+    int start_health = 3;
+    int remained_health = 3;
+    bool alive = true;
     int height = 68;
     int width = 76;
-    const char * texture = "Assets/spaceship.bmp";
+    Uint32 delay = 0;
+    const char * path = "Assets/spaceship.bmp";
     
 };
 #endif /* Spaceship_hpp */

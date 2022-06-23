@@ -13,15 +13,15 @@
 class SpaceshipBullet : public GameObject
 {
 public:
-    SpaceshipBullet(SDL_Renderer * rend,int x, int y);
-private:
-    int damage;
-    int speed = 1;
-    int height = 10;
-    int width = 10;
-    const char * texture = "Assets/bullet.bmp";
-    
-    friend class Spaceship;
+    SpaceshipBullet():GameObject(){}
+    bool init(SDL_Renderer * rend, int x, int y);
+    void Update();
+protected:
+    int damage = 2;
+    int speed = 7;
+    int height = 11;
+    int width = 11;
+    const char * path = "Assets/bullet.bmp";
 };
 
 

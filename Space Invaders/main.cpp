@@ -19,10 +19,9 @@ int main(int argc, const char * argv[])
     while(game->running())
     {
         frameStart = SDL_GetTicks();
-        
-        game->update();
         game->handleEvents();
-        game->render();
+        game->Update();
+        game->Render();
         
         frameTime = SDL_GetTicks()-frameStart;
         if(frameDelay > frameTime)
@@ -31,7 +30,7 @@ int main(int argc, const char * argv[])
         }
         
     }
-    game->clean();
+    game->Clean();
     //making smth
     return 0;
 }

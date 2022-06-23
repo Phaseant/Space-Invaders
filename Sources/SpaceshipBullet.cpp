@@ -7,15 +7,22 @@
 
 #include "SpaceshipBullet.hpp"
 
-
-SpaceshipBullet::SpaceshipBullet(SDL_Renderer * rend, int x, int y) : GameObject(rend, x, y)
+bool SpaceshipBullet::init(SDL_Renderer *rend, int x, int y)
 {
-    objTexture = TextureManager::LoadTexture(texture, rend);
-    damage = 5;
-    speed = 5;
-    srcRect.h = height;
-    srcRect.w = width;
-    objRect.h = srcRect.h;
-    objRect.w = srcRect.w;
-    
+    if((objTexture = TextureManager::LoadTexture(path, rend)) == nullptr)
+            return false;
+    renderer = rend;
+    xpos = x;
+    ypos = y;
+    objRect.x = xpos;
+    objRect.y = ypos;
+    objRect.h = srcRect.h = height;
+    objRect.w = srcRect.w = width;
+    return true;
+}
+
+void SpaceshipBullet::Update()
+{
+    ypos -=speed;
+    objRect.y = ypos;
 }

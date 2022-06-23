@@ -13,23 +13,23 @@
 class GameObject
 {
 public:
-    GameObject(SDL_Renderer * rend,int x, int y);
+    GameObject(){}
     void Update();
     void Render();
     int& getX();
     int& getY();
     bool checkCollision(GameObject a, GameObject b);
     bool& isAlive();
+    void Clean();
     
 protected:
-    const char * texture;
     int xpos;
     int ypos;
     int height;
     int width;
     bool alive;
     SDL_Texture * objTexture;
-    SDL_Rect srcRect, objRect;
+    SDL_Rect srcRect{0,0,0,0}, objRect{0,0,0,0};
     SDL_Renderer * renderer;
     
 };
