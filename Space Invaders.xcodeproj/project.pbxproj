@@ -17,6 +17,7 @@
 		BD40FE3E2862360E00A2C023 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD40FE3C2862360E00A2C023 /* GameObject.cpp */; };
 		BD40FE4128626D8600A2C023 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD40FE3F28626D8600A2C023 /* Enemy.cpp */; };
 		BD40FE4428626E5C00A2C023 /* SpaceshipBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */; };
+		BDF30F4A2864C386001151B1 /* EnemyBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF30F482864C386001151B1 /* EnemyBullet.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +51,9 @@
 		BD40FE4028626D8600A2C023 /* Enemy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Enemy.hpp; path = Sources/Enemy.hpp; sourceTree = SOURCE_ROOT; };
 		BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SpaceshipBullet.cpp; path = Sources/SpaceshipBullet.cpp; sourceTree = SOURCE_ROOT; };
 		BD40FE4328626E5C00A2C023 /* SpaceshipBullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = SpaceshipBullet.hpp; path = Sources/SpaceshipBullet.hpp; sourceTree = SOURCE_ROOT; };
+		BDF30F462864C22E001151B1 /* Bullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bullet.hpp; path = Sources/Bullet.hpp; sourceTree = SOURCE_ROOT; };
+		BDF30F482864C386001151B1 /* EnemyBullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyBullet.cpp; path = Sources/EnemyBullet.cpp; sourceTree = SOURCE_ROOT; };
+		BDF30F492864C386001151B1 /* EnemyBullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = EnemyBullet.hpp; path = Sources/EnemyBullet.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +96,13 @@
 				BD40FE3C2862360E00A2C023 /* GameObject.cpp */,
 				BD1DD52828600DB100A8058A /* Spaceship.hpp */,
 				BD1DD52728600DB100A8058A /* Spaceship.cpp */,
-				BD40FE4328626E5C00A2C023 /* SpaceshipBullet.hpp */,
-				BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */,
 				BD40FE4028626D8600A2C023 /* Enemy.hpp */,
 				BD40FE3F28626D8600A2C023 /* Enemy.cpp */,
+				BDF30F462864C22E001151B1 /* Bullet.hpp */,
+				BD40FE4328626E5C00A2C023 /* SpaceshipBullet.hpp */,
+				BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */,
+				BDF30F492864C386001151B1 /* EnemyBullet.hpp */,
+				BDF30F482864C386001151B1 /* EnemyBullet.cpp */,
 				BD40FE3A2862311800A2C023 /* TextureManager.hpp */,
 				BD40FE392862311800A2C023 /* TextureManager.cpp */,
 			);
@@ -185,6 +192,7 @@
 				BD0D613D285B5EA7007869BB /* Game_Engine.cpp in Sources */,
 				BD40FE3B2862311800A2C023 /* TextureManager.cpp in Sources */,
 				BD40FE3E2862360E00A2C023 /* GameObject.cpp in Sources */,
+				BDF30F4A2864C386001151B1 /* EnemyBullet.cpp in Sources */,
 				BD40FE4428626E5C00A2C023 /* SpaceshipBullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

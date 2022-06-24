@@ -8,18 +8,29 @@
 #ifndef Enemy_hpp
 #define Enemy_hpp
 
+#include "Game_Engine.hpp"
 #include "GameObject.hpp"
+#include "TextureManager.hpp"
 
 class Enemy : public GameObject
 {
 public:
-    Enemy();
+    Enemy():GameObject(){}
+    bool init(SDL_Renderer *rend, int x, int y);
     bool & isAlive();
+    void gotShot();
+    int& getDirection();
+    void Update();
+    int& getDelay();
 private:
-    int start_health;
-    int remained_health;
+    int start_health = 1;
+    int remained_health = 1;
     bool alive;
-    const char * texture = "Assets/Alien.bmp"; //текстурок несколько, проработать
+    int height = 38;
+    int width = 38;
+    int direction = 1;
+    int delay = 0;
+    const char * path = "Assets/enemy1.bmp"; //текстурок несколько, проработать
 };
 
 #endif /* Enemy_hpp */

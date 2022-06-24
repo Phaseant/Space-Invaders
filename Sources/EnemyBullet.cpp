@@ -1,13 +1,13 @@
 //
-//  SpaceshipBullet.cpp
+//  EnemyBullet.cpp
 //  Space Invaders
 //
-//  Created by Klim Krivoguzov on 22.06.2022.
+//  Created by Klim Krivoguzov on 23.06.2022.
 //
 
-#include "SpaceshipBullet.hpp"
+#include "EnemyBullet.hpp"
 
-bool SpaceshipBullet::init(SDL_Renderer *rend, int x, int y)
+bool EnemyBullet::init(SDL_Renderer *rend, int x, int y)
 {
     if((objTexture = TextureManager::LoadTexture(path, rend)) == nullptr)
             return false;
@@ -21,8 +21,8 @@ bool SpaceshipBullet::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
-void SpaceshipBullet::Update()
+void EnemyBullet::Update()
 {
-    ypos -= speed;
+    ypos += speed;
     objRect.y = ypos;
 }

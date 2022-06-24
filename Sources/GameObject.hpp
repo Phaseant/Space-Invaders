@@ -18,7 +18,7 @@ public:
     void Render();
     int& getX();
     int& getY();
-    bool checkCollision(GameObject a, GameObject b);
+    SDL_Rect GetRect();
     bool& isAlive();
     void Clean();
     

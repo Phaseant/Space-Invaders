@@ -23,13 +23,3 @@ bool Spaceship::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
-void Spaceship::Update()
-{
-    objRect.x = xpos;
-    objRect.y = ypos;
-}
-
-Uint32& Spaceship::getCooldown()
-{
-    return delay;
-}

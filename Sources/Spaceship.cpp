@@ -1,16 +1,18 @@
 //
-//  SpaceshipBullet.cpp
+//  Spaceship.cpp
 //  Space Invaders
 //
-//  Created by Klim Krivoguzov on 22.06.2022.
+//  Created by Klim Krivoguzov on 20.06.2022.
 //
 
-#include "SpaceshipBullet.hpp"
+#include "Spaceship.hpp"
+#include "Game_Engine.hpp"
+#include <vector>
 
-bool SpaceshipBullet::init(SDL_Renderer *rend, int x, int y)
+bool Spaceship::init(SDL_Renderer *rend, int x, int y)
 {
     if((objTexture = TextureManager::LoadTexture(path, rend)) == nullptr)
-            return false;
+        return false;
     renderer = rend;
     xpos = x;
     ypos = y;
@@ -21,8 +23,13 @@ bool SpaceshipBullet::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
-void SpaceshipBullet::Update()
+void Spaceship::Update()
 {
-    ypos -= speed;
+    objRect.x = xpos;
     objRect.y = ypos;
+}
+
+Uint32& Spaceship::getCooldown()
+{
+    return delay;
 }

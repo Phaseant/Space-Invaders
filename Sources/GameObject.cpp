@@ -41,3 +41,8 @@ void GameObject::Clean()
     SDL_DestroyTexture(objTexture);
     SDL_DestroyRenderer(renderer);
 }
+
+SDL_Rect GameObject::GetRect()
+{
+    return objRect;
+}

@@ -8,12 +8,12 @@
 #ifndef SpaceshipBullet_hpp
 #define SpaceshipBullet_hpp
 
-#include "GameObject.hpp"
+#include "Bullet.hpp"
 #include "TextureManager.hpp"
-class SpaceshipBullet : public GameObject
+class SpaceshipBullet : public Bullet
 {
 public:
-    SpaceshipBullet():GameObject(){}
+    SpaceshipBullet(): Bullet() {}
     bool init(SDL_Renderer * rend, int x, int y);
     void Update();
 protected:

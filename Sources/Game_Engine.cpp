@@ -10,7 +10,6 @@
 #include "GameObject.hpp"
 #include "Spaceship.hpp"
 #include "SpaceshipBullet.hpp"
-#include "Enemy.hpp"
 
 
 Game::Game()
@@ -30,9 +29,10 @@ void Game::init(const char *title, int xpos, int ypos, bool fullsceen)
             std::cout<< "Window created" <<std::endl;
         
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+        
         if(renderer)
         {
-            background = TextureManager::LoadTexture("Assets/background.bmp", renderer);
+//            SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255); //r g b a
             std::cout<< "Renderer created" <<std::endl;
         }
         
@@ -41,9 +41,7 @@ void Game::init(const char *title, int xpos, int ypos, bool fullsceen)
     else isRunning = false;
     
     ship = new Spaceship();
-    ship->init(renderer, WINDOW_WIDTH/2-76/2, WINDOW_HEIGHT-75); //w51 h38
-    spawnEnemies(renderer, enemies);
-    
+    ship->init(renderer, WINDOW_WIDTH/2-76/2, WINDOW_HEIGHT-75);
     
 }
 
@@ -65,64 +63,23 @@ void Game::handleEvents()
             break;
     }
     const Uint8 * keystate = SDL_GetKeyboardState(NULL);
-    
     if(keystate[SDL_SCANCODE_LEFT])
         ship->getX() -= 5;
     if(keystate[SDL_SCANCODE_RIGHT])
         ship->getX() += 5;
-    //ship bounds
+//
+//    if(keystate[SDL_SCANCODE_SPACE])
+//    {
+//        if(!SDL_TICKS_PASSED(SDL_GetTicks(), SDL_GetTicks()+5))
+//        {
+//            Shoot();
+//        }
+//    }
+    
     if(ship->getX() <= 2)
         ship->getX() = 2;
     else if (ship->getX() > WINDOW_WIDTH - 77)
         ship->getX() = WINDOW_WIDTH - 77;
-    for(auto it = enemies.begin();it != enemies.end();it++)
-    {
-        Enemy * enemy = *it;
-        if(enemy->getX() > WINDOW_WIDTH-34)
-        {
-            if(enemy->getDelay() == 15)
-            {
-                for(auto it1 = enemies.begin();it1 != enemies.end();it1++)
-                {
-                    Enemy * enemy1 = *it1;
-                    enemy1->getX() = enemy1->getX();
-                    enemy1->getY() +=1;
-                    enemy1->getDirection() *= -1;
-                }
-            }
-        }
-        if(enemy->getX() < 2)
-        {
-            if(enemy->getDelay() == 15)
-            {
-                for(auto it1 = enemies.begin();it1 != enemies.end();it1++)
-                {
-                    Enemy * enemy1 = *it1;
-                    enemy1->getX() = enemy1->getX();
-                    enemy1->getY() +=1;
-                    enemy1->getDirection() *= -1;
-                }
-            }
-        }
-    }
-    for(int i = 0; i < userBullets.size();i++)
-    {
-        for(int j = 0; j < enemies.size(); j++)
-        {
-            Bullet * bullet = userBullets[i];
-            Enemy * enemy = enemies[j];
-            
-            if(checkCollision(bullet->GetRect(), enemy->GetRect()))
-            {
-                userBullets.erase(userBullets.begin() + i);
-                enemies.erase(enemies.begin() + j);
-                
-                delete bullet;
-                delete enemy;
-            }
-        }
-    }
-    
 }
 
 void Game::Update()
@@ -139,34 +96,16 @@ void Game::Update()
         }
         else ++it;
     }
-    
-    for(auto it = enemies.begin();it != enemies.end();it++)
-    {
-        Enemy * enemy = *it;
-        if(enemy->getDelay() == 15)
-        {
-            enemy->Update();
-            enemy->getDelay() = 0;
-        }
-        enemy->getDelay()++;
-    }
 }
 
 void Game::Render()
 {
-    
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, background, NULL, NULL); //background
-    ship->Render(); //ship
-    for(auto it = userBullets.begin();it != userBullets.end();it++) //bullets
+    ship->Render();
+    for(auto it = userBullets.begin();it != userBullets.end();it++)
     {
         SpaceshipBullet * bullet = *it;
         bullet->Render();
-    }
-    for(auto it = enemies.begin();it != enemies.end();it++)
-    {
-        Enemy * enemy = *it;
-        enemy->Render();
     }
     SDL_RenderPresent(renderer);
 }
@@ -181,12 +120,6 @@ void Game::Clean()
         SpaceshipBullet * bullet = *it;
         if(*it != nullptr)
             bullet->Clean();
-    }
-    for(auto it = enemies.begin();it != enemies.end();it++)
-    {
-        Enemy * enemy = *it;
-        if(enemy != nullptr)
-            enemy->Clean();
     }
     SDL_Quit();
     std::cout<< "Game cleaned" <<std::endl;
@@ -226,17 +159,4 @@ bool checkCollision(SDL_Rect objRectA, SDL_Rect objRectB) //check collisions //c
     if(rightA <= leftB) {return false;}
     //if not
     return true;
-}
-
-void Game::spawnEnemies(SDL_Renderer * rend, std::vector<Enemy*> &enemies)
-{
-    for(int row = 1;row < 6;row++)
-    {
-        for(int colomn = 0; colomn< 7;colomn++)
-        {
-            Enemy * enemy = new Enemy();
-            enemy->init(rend, 30+50*colomn, 30+row*50); //xy
-            enemies.push_back(enemy);
-        }
-    }
 }

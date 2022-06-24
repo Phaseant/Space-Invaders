@@ -30,19 +30,13 @@ public:
     const int WINDOW_WIDTH = 400;
     const int WINDOW_HEIGHT = 600;
     std::vector<SpaceshipBullet*> userBullets;
-    std::vector<Enemy*> enemies;
-    std::vector<EnemyBullet*> enemyBullets;
     void Shoot();
-    void spawnEnemies(SDL_Renderer * rend, std::vector<Enemy*> &enemies);
 private:
-    int shift = 34;
     bool isRunning;
     Spaceship  * ship;
     SDL_Window * window;
     SDL_Renderer * renderer;
     SDL_Surface * surface;
-    SDL_Texture * background;
 };
 
-bool checkCollision(SDL_Rect objRectA, SDL_Rect objRectB);
 #endif /* Game_Engine_hpp */
