@@ -310,12 +310,15 @@ bool checkCollision(SDL_Rect objRectA, SDL_Rect objRectB) //check collisions //c
 
 void Game::spawnEnemies(SDL_Renderer * rend, std::vector<Enemy*> &enemies)
 {
+    srand(time(NULL));
     for(int row = 1;row < 6;row++)
     {
         for(int colomn = 0; colomn< 7;colomn++)
         {
+            int sprite = rand() % 5;
+            std::cout<<sprite<<std::endl;
             Enemy * enemy = new Enemy();
-            enemy->init(rend, 30+50*colomn, 30+row*50); //xy
+            enemy->init(rend, 30+50*colomn, 30+row*50,sprite); //xy
             enemies.push_back(enemy);
         }
     }

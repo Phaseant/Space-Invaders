@@ -6,7 +6,7 @@
 //
 
 #include "Enemy.hpp"
-bool Enemy::init(SDL_Renderer *rend, int x, int y)
+bool Enemy::init(SDL_Renderer *rend, int x, int y, int sprite)
 {
     if((objTexture = TextureManager::LoadTexture(path, rend)) == nullptr)
             return false;
@@ -15,10 +15,11 @@ bool Enemy::init(SDL_Renderer *rend, int x, int y)
     ypos = y;
     objRect.x = xpos;
     objRect.y = ypos;
+    srcRect.x = width*sprite;
     srcRect.w = width;
     srcRect.h = height;
-    objRect.h = 33;
-    objRect.w = 33;
+    objRect.h = 36;
+    objRect.w = 36;
     return true;
 }
 

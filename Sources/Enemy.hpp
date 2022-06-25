@@ -16,17 +16,17 @@ class Enemy : public GameObject
 {
 public:
     Enemy():GameObject(){}
-    bool init(SDL_Renderer *rend, int x, int y);
+    bool init(SDL_Renderer *rend, int x, int y, int sprite);
     int& getDirection();
     void Update();
     int& getDelay();
 private:
     bool alive;
-    int height = 38;
-    int width = 38;
+    int height = 10;
+    int width = 10;
     int direction = 1;
     int delay = 0;
-    const char * path = "Assets/enemy1.bmp"; //текстурок несколько, проработать
+    const char * path = "Assets/enemies.bmp"; //текстурок несколько, проработать
 };
 
 #endif /* Enemy_hpp */

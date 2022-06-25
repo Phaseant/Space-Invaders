@@ -49,5 +49,5 @@ SDL_Rect GameObject::GetRect()
 
 int GameObject::getW()
 {
-    return srcRect.w;
+    return objRect.w;
 }
