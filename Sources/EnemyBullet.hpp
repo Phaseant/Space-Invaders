@@ -19,7 +19,7 @@ public:
     void Update();
 protected:
     int damage = 1;
-    int speed = 3;
+    int speed = 2;
     int height = 13;
     int width = 13;
     const char * path = "Assets/enemy_bullet.bmp";

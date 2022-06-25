@@ -18,6 +18,7 @@
 		BD40FE4128626D8600A2C023 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD40FE3F28626D8600A2C023 /* Enemy.cpp */; };
 		BD40FE4428626E5C00A2C023 /* SpaceshipBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */; };
 		BDF30F4A2864C386001151B1 /* EnemyBullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF30F482864C386001151B1 /* EnemyBullet.cpp */; };
+		BDF30F4D286624E7001151B1 /* Explosion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF30F4B286624E7001151B1 /* Explosion.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +55,8 @@
 		BDF30F462864C22E001151B1 /* Bullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bullet.hpp; path = Sources/Bullet.hpp; sourceTree = SOURCE_ROOT; };
 		BDF30F482864C386001151B1 /* EnemyBullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyBullet.cpp; path = Sources/EnemyBullet.cpp; sourceTree = SOURCE_ROOT; };
 		BDF30F492864C386001151B1 /* EnemyBullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = EnemyBullet.hpp; path = Sources/EnemyBullet.hpp; sourceTree = SOURCE_ROOT; };
+		BDF30F4B286624E7001151B1 /* Explosion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Explosion.cpp; path = Sources/Explosion.cpp; sourceTree = SOURCE_ROOT; };
+		BDF30F4C286624E7001151B1 /* Explosion.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Explosion.hpp; path = Sources/Explosion.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				BD40FE4228626E5C00A2C023 /* SpaceshipBullet.cpp */,
 				BDF30F492864C386001151B1 /* EnemyBullet.hpp */,
 				BDF30F482864C386001151B1 /* EnemyBullet.cpp */,
+				BDF30F4C286624E7001151B1 /* Explosion.hpp */,
+				BDF30F4B286624E7001151B1 /* Explosion.cpp */,
 				BD40FE3A2862311800A2C023 /* TextureManager.hpp */,
 				BD40FE392862311800A2C023 /* TextureManager.cpp */,
 			);
@@ -194,6 +199,7 @@
 				BD40FE3E2862360E00A2C023 /* GameObject.cpp in Sources */,
 				BDF30F4A2864C386001151B1 /* EnemyBullet.cpp in Sources */,
 				BD40FE4428626E5C00A2C023 /* SpaceshipBullet.cpp in Sources */,
+				BDF30F4D286624E7001151B1 /* Explosion.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,3 +23,13 @@ bool Spaceship::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
+void Spaceship::gotShot()
+{
+    remained_health--;
+}
+
+bool Spaceship::isAlive()
+{
+    alive = remained_health > 0?true:false;
+    return alive;
+}

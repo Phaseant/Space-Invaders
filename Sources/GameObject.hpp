@@ -9,7 +9,7 @@
 #define GameObject_hpp
 
 #include "Game_Engine.hpp"
-
+#include <ctime>
 class GameObject
 {
 public:
@@ -21,6 +21,7 @@ public:
     SDL_Rect GetRect();
     bool& isAlive();
     void Clean();
+    int getW();
     
 protected:
     int xpos;

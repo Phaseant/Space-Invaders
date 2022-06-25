@@ -7,13 +7,16 @@
 
 #include <iostream>
 #include <SDL.h>
+#include <vector>
 #ifndef Game_Engine_hpp
 #define Game_Engine_hpp
 class Spaceship;
 class SpaceshipBullet;
 class EnemyBullet;
 class Enemy;
-#include <vector>
+class Explosion;
+class GameObject;
+
 
 class Game
 {
@@ -32,7 +35,10 @@ public:
     std::vector<SpaceshipBullet*> userBullets;
     std::vector<Enemy*> enemies;
     std::vector<EnemyBullet*> enemyBullets;
+    std::vector<Explosion*> explosions;
     void Shoot();
+    void Explode(GameObject * object);
+    void enemyShoot(Enemy * enemy);
     void spawnEnemies(SDL_Renderer * rend, std::vector<Enemy*> &enemies);
 private:
     int shift = 34;

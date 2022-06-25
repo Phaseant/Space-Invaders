@@ -16,8 +16,9 @@ public:
     Spaceship():GameObject(){}
     bool init(SDL_Renderer * rend, int x, int y);
     void SpaceshipControl(int WINDOW_WIDHT);
+    void gotShot();
+    bool isAlive();
 protected:
-    int start_health = 3;
     int remained_health = 3;
     bool alive = true;
     int height = 68;

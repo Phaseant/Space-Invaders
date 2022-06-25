@@ -22,11 +22,6 @@ bool Enemy::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
-void Enemy::gotShot()
-{
-    remained_health--;
-}
-
 int& Enemy::getDirection()
 {
     return direction;
@@ -35,7 +30,6 @@ int& Enemy::getDirection()
 
 void Enemy::Update()
 {
-    
     xpos += 1*direction;
     objRect.x = xpos;
     objRect.y = ypos;

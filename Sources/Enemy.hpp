@@ -17,14 +17,10 @@ class Enemy : public GameObject
 public:
     Enemy():GameObject(){}
     bool init(SDL_Renderer *rend, int x, int y);
-    bool & isAlive();
-    void gotShot();
     int& getDirection();
     void Update();
     int& getDelay();
 private:
-    int start_health = 1;
-    int remained_health = 1;
     bool alive;
     int height = 38;
     int width = 38;
