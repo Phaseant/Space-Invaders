@@ -23,13 +23,19 @@ bool Spaceship::init(SDL_Renderer *rend, int x, int y)
     return true;
 }
 
-void Spaceship::Update()
+void Spaceship::gotShot()
 {
-    objRect.x = xpos;
-    objRect.y = ypos;
+    remained_health--;
 }
 
-Uint32& Spaceship::getCooldown()
+bool Spaceship::isAlive()
 {
-    return delay;
+    alive = remained_health > 0?true:false;
+    return alive;
+}
+
+
+int Spaceship::getHealth()
+{
+    return remained_health;
 }
