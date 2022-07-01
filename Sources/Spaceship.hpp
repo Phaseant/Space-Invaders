@@ -19,12 +19,13 @@ public:
     void gotShot();
     bool isAlive();
     int getHealth();
+    const int width = 76;
 protected:
     int score;
     int remained_health = 3;
     bool alive = true;
     int height = 68;
-    int width = 76;
+    
     const char * path = "Assets/spaceship.bmp";
     
 };

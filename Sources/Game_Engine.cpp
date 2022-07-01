@@ -25,13 +25,13 @@ void Game::init(const char *title, int xpos, int ypos, bool fullsceen)
     if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
     {
         std::cout<< "SDL Initialised" <<std::endl;
-        icon = SDL_LoadBMP("Assets/spaceship.bmp");
-        SDL_SetWindowIcon(window, icon);
         window = SDL_CreateWindow(title, xpos, ypos, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
         if(window)
             std::cout<< "Window created" <<std::endl;
-        
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+        if(!renderer)
+            throw std::runtime_error("Renderer is uninitialized");
+        assert(renderer);
         if(renderer)
         {
             background = TextureManager::LoadTexture("Assets/background.bmp", renderer);
@@ -48,7 +48,7 @@ void Game::init(const char *title, int xpos, int ypos, bool fullsceen)
     else isRunning = false;
     
     ship = new Spaceship();
-    ship->init(renderer, WINDOW_WIDTH/2-76/2, WINDOW_HEIGHT-75); //w51 h38
+    ship->init(renderer, WINDOW_WIDTH/2-ship->width/2, WINDOW_HEIGHT-75); //w51 h38
     spawnEnemies(renderer, enemies);
     for(int i = 0; i < 3;i++)
     {
@@ -162,7 +162,7 @@ void Game::Shoot()
     
     if(userBullets.size() < 2 && ship->isAlive())
     {
-        bullet->init(renderer,ship->getX()+32,ship->getY());
+        bullet->init(renderer,ship->getX()+ship->width/2-6,ship->getY()); //
         userBullets.push_back(bullet);
     }
 }
@@ -228,21 +228,21 @@ void Game::stateGameEvents()
     //ship bounds
     if(ship->getX() <= 2) //check spaceship wall collisions
         ship->getX() = 2;
-    else if (ship->getX() > WINDOW_WIDTH - 77)
-        ship->getX() = WINDOW_WIDTH - 77;
+    else if (ship->getX() > WINDOW_WIDTH - ship->width)
+        ship->getX() = WINDOW_WIDTH - ship->width;
     
     for(auto it = enemies.begin();it != enemies.end();it++) //check wall collisions enemy
     {
         Enemy * enemy = *it;
-        if(enemy->getX() > WINDOW_WIDTH-34)
+        if(enemy->getX() > WINDOW_WIDTH-enemy->getSize())
         {
             if(enemy->getDelay() == 15)
             {
                 for(auto it1 = enemies.begin();it1 != enemies.end();it1++)
                 {
                     Enemy * enemy1 = *it1;
-                    enemy1->getY() +=10;
-                    enemy1->getDirection() = -enemy1->getDirection();
+                    enemy1->move();
+                    enemy1->changeDirection();
                 }
                 break;
             }
@@ -254,8 +254,8 @@ void Game::stateGameEvents()
                 for(auto it1 = enemies.begin();it1 != enemies.end();it1++)
                 {
                     Enemy * enemy1 = *it1;
-                    enemy1->getY() +=10;
-                    enemy1->getDirection() = -enemy1->getDirection();
+                    enemy1->move();
+                    enemy1->changeDirection();
                 }
                 break;
             }

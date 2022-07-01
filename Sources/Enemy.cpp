@@ -23,9 +23,9 @@ bool Enemy::init(SDL_Renderer *rend, int x, int y, int sprite)
     return true;
 }
 
-int& Enemy::getDirection()
+void Enemy::changeDirection()
 {
-    return direction;
+    direction *= -1;
 }
 
 
@@ -42,3 +42,13 @@ int& Enemy::getDelay()
 }
 
 
+
+void Enemy::move()
+{
+    ypos+=10;
+}
+
+int Enemy::getSize()
+{
+    return objRect.w;
+}

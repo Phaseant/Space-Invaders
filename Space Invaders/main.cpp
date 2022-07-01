@@ -6,22 +6,21 @@
 //
 
 #include "Game_Engine.hpp"
-Game * game = nullptr;
 int main(int argc, const char * argv[])
 {
     const int FPS = 60;
     const int frameDelay = 1000/FPS;
     Uint32 frameStart;
     int frameTime;
-    game = new Game();
-    game->init("Space Invaders", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, false);
+    Game game;
+    game.init("Space Invaders", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, false);
     
-    while(game->running())
+    while(game.running())
     {
         frameStart = SDL_GetTicks();
-        game->handleEvents();
-        game->Update();
-        game->Render();
+        game.handleEvents();
+        game.Update();
+        game.Render();
         
         frameTime = SDL_GetTicks()-frameStart;
         if(frameDelay > frameTime)
@@ -30,7 +29,7 @@ int main(int argc, const char * argv[])
         }
         
     }
-    game->Clean();
+    game.Clean();
     //making smth
     return 0;
 }
